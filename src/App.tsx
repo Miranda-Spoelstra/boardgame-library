@@ -19,8 +19,7 @@ function App() {
 			<Button
 				buttonStyle={{ color: 'danger', rounded: 'lg', size: 'lg' }}
 				rightIcon={<TbTrash />}
-			>
-			</Button>
+			></Button>
 			<Button
 				buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
 				buttonVariant='outline'
@@ -29,6 +28,7 @@ function App() {
 			</Button>
 			<Button
 				buttonStyle={{ color: 'secondary', rounded: 'lg', size: 'md' }}
+				leftIcon={<TbTrash />}
 				isLoading={true}
 			>
 				Click

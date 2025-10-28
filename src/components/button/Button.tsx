@@ -2,8 +2,6 @@ import { type VariantProps } from 'tailwind-variants';
 import { TbLoader } from 'react-icons/tb';
 import { solidButton, outlineButton, disabledButton } from './ButtonStyles';
 
-// inspo: https://dev.to/teyim/create-reusable-button-components-with-reacttypescript-tailwind-and-tailwind-variants-2j7d
-
 interface ButtonProps {
 	children?: React.ReactNode;
 	isLoading?: boolean;
@@ -40,29 +38,27 @@ export default function Button(props: ButtonProps) {
 		}
 	};
 
-	const icon = isLoading ? (
-		<TbLoader className='animate-spin' size={25} />
-	) : (
-		rightIcon || leftIcon
-	);
-	const iconMargin = rightIcon ? 'ml-2' : 'mr-2';
-
 	// Only add iconMargin if there are children inside the button and it is not loading
+	const iconMargin = rightIcon ? 'ml-2' : 'mr-2';
 	const renderedIcon = (
 		<span
 			className={`inline-flex shrink-0 self-center ${
 				children && !isLoading && iconMargin
 			}`}
 		>
-			{icon}
+			{isLoading ? (
+				<TbLoader className='animate-spin' size={25} />
+			) : (
+				rightIcon || leftIcon
+			)}
 		</span>
 	);
 
 	return (
 		<button className={renderButtonVariant()} {...rest}>
-			{icon && leftIcon ? renderedIcon : null}
+			{!isLoading && leftIcon ? renderedIcon : null}
 			{isLoading ? renderedIcon : children}
-			{icon && rightIcon ? renderedIcon : null}
+			{!isLoading && rightIcon ? renderedIcon : null}
 		</button>
 	);
 }
