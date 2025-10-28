@@ -2,7 +2,7 @@ import { type VariantProps } from 'tailwind-variants';
 import { TbLoader } from 'react-icons/tb';
 import { solidButton, outlineButton, disabledButton } from './ButtonStyles';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	children?: React.ReactNode;
 	isLoading?: boolean;
 	disabled?: boolean;

@@ -11,4 +11,8 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { useFetchBoardgamesQuery } from './apis/boardgamesApi';
+export {
+	useFetchBoardgamesQuery,
+	useAddBoardgameMutation,
+	useRemoveBoardgameMutation,
+} from './apis/boardgamesApi';

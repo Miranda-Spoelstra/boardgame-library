@@ -1,10 +1,24 @@
 {
   "boardgames": [
     {
+      "id": "123",
       "name": "Ark Nova"
     },
     {
+      "id": "234",
       "name": "Scout"
+    },
+    {
+      "id": "a1c9",
+      "name": "Practical Concrete Chair"
+    },
+    {
+      "id": "9e47",
+      "name": "Unbranded Bronze Keyboard"
+    },
+    {
+      "id": "0993",
+      "name": "Modern Ceramic Pants"
     }
   ],
   "favorites": []
