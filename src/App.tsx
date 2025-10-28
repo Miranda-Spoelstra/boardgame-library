@@ -17,6 +17,11 @@ function App() {
 				Click
 			</Button>
 			<Button
+				buttonStyle={{ color: 'danger', rounded: 'lg', size: 'lg' }}
+				rightIcon={<TbTrash />}
+			>
+			</Button>
+			<Button
 				buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
 				buttonVariant='outline'
 			>

@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { type VariantProps } from 'tailwind-variants';
 import { TbLoader } from 'react-icons/tb';
 import { solidButton, outlineButton, disabledButton } from './ButtonStyles';
@@ -16,7 +15,7 @@ interface ButtonProps {
 	buttonVariant?: 'solid' | 'outline';
 }
 
-function Button(props: ButtonProps) {
+export default function Button(props: ButtonProps) {
 	const {
 		children,
 		buttonStyle = { color: 'primary', rounded: 'sm', size: 'sm' },
@@ -28,19 +27,6 @@ function Button(props: ButtonProps) {
 		className,
 		...rest
 	} = props;
-
-	const { newIcon: icon, iconPlacement } = useMemo(() => {
-		let newIcon = rightIcon || leftIcon;
-
-		if (isLoading) {
-			newIcon = <TbLoader className='animate-spin' size={25} />;
-		}
-
-		return {
-			newIcon,
-			iconPlacement: rightIcon ? 'ml-2' : 'mr-2',
-		};
-	}, [isLoading, leftIcon, rightIcon]);
 
 	const renderButtonVariant = () => {
 		if (disabled) {
@@ -54,24 +40,29 @@ function Button(props: ButtonProps) {
 		}
 	};
 
+	const icon = isLoading ? (
+		<TbLoader className='animate-spin' size={25} />
+	) : (
+		rightIcon || leftIcon
+	);
+	const iconMargin = rightIcon ? 'ml-2' : 'mr-2';
+
+	// Only add iconMargin if there are children inside the button and it is not loading
 	const renderedIcon = (
 		<span
 			className={`inline-flex shrink-0 self-center ${
-				children && !isLoading && iconPlacement
+				children && !isLoading && iconMargin
 			}`}
 		>
 			{icon}
 		</span>
 	);
-	
+
 	return (
-		<button className={renderButtonVariant()} {...rest} disabled={disabled}>
+		<button className={renderButtonVariant()} {...rest}>
 			{icon && leftIcon ? renderedIcon : null}
-			{isLoading && renderedIcon}
-			{!isLoading && children}
+			{isLoading ? renderedIcon : children}
 			{icon && rightIcon ? renderedIcon : null}
 		</button>
 	);
 }
-
-export default Button;
