@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { type VariantProps } from 'tailwind-variants';
 import { TbLoader } from 'react-icons/tb';
-import { solidButton, outlineButton } from './ButtonStyles';
+import { solidButton, outlineButton, disabledButton } from './ButtonStyles';
 
 // inspo: https://dev.to/teyim/create-reusable-button-components-with-reacttypescript-tailwind-and-tailwind-variants-2j7d
 
@@ -19,17 +19,15 @@ interface ButtonProps {
 function Button(props: ButtonProps) {
 	const {
 		children,
-		buttonStyle,
+		buttonStyle = { color: 'primary', rounded: 'sm', size: 'sm' },
 		buttonVariant = 'solid',
-		disabled,
-		isLoading,
+		disabled = false,
+		isLoading = false,
 		leftIcon,
 		rightIcon,
 		className,
 		...rest
 	} = props;
-
-	console.log(buttonVariant, buttonStyle);
 
 	const { newIcon: icon, iconPlacement } = useMemo(() => {
 		let newIcon = rightIcon || leftIcon;
@@ -40,11 +38,14 @@ function Button(props: ButtonProps) {
 
 		return {
 			newIcon,
-			iconPlacement: rightIcon ? ('right' as const) : ('left' as const),
+			iconPlacement: rightIcon ? 'ml-2' : 'mr-2',
 		};
 	}, [isLoading, leftIcon, rightIcon]);
 
 	const renderButtonVariant = () => {
+		if (disabled) {
+			return disabledButton({ ...buttonStyle, className });
+		}
 		if (buttonVariant === 'solid') {
 			return solidButton({ ...buttonStyle, className });
 		}
@@ -53,34 +54,22 @@ function Button(props: ButtonProps) {
 		}
 	};
 
-	// todo: fix disabled styling
-	return (
-		<button
-			className={renderButtonVariant()}
-			{...rest}
-			disabled={disabled || isLoading}
+	const renderedIcon = (
+		<span
+			className={`inline-flex shrink-0 self-center ${
+				children && !isLoading && iconPlacement
+			}`}
 		>
-			{icon && iconPlacement === 'left' ? (
-				<span
-					className={`inline-flex shrink-0 self-center ${
-						children && !isLoading && 'mr-2'
-					}`}
-				>
-					{icon}
-				</span>
-			) : null}
-
+			{icon}
+		</span>
+	);
+	
+	return (
+		<button className={renderButtonVariant()} {...rest} disabled={disabled}>
+			{icon && leftIcon ? renderedIcon : null}
+			{isLoading && renderedIcon}
 			{!isLoading && children}
-
-			{icon && iconPlacement === 'right' ? (
-				<span
-					className={`inline-flex shrink-0 self-center ${
-						children && !isLoading && 'ml-2'
-					}`}
-				>
-					{icon}
-				</span>
-			) : null}
+			{icon && rightIcon ? renderedIcon : null}
 		</button>
 	);
 }

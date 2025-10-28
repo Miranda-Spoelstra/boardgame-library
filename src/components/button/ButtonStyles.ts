@@ -22,7 +22,6 @@ export const baseButton = tv({
 			md: 'mx-4',
 			lg: 'mx-6',
 		},
-		// change to use flex for positioning?
 		align: {
 			center: 'mx-auto',
 			right: 'ml-auto',
@@ -48,11 +47,11 @@ export const solidButton = tv({
 	extend: baseButton,
 	variants: {
 		color: {
-			primary: 'border-blue-500 bg-blue-500 text-white',
-			secondary: 'border-gray-900 bg-gray-900 text-white',
-			success: 'border-green-500 bg-green-500 text-white',
-			warning: 'border-yellow-400 bg-yellow-400 text-white',
-			danger: 'border-red-500 bg-red-500 text-white',
+			primary: 'border-blue-500 bg-blue-500 text-white hover:bg-blue-600',
+			secondary: 'border-gray-900 bg-gray-900 text-white hover:bg-gray-800',
+			success: 'border-green-500 bg-green-500 text-white hover:bg-green-600',
+			warning: 'border-orange-400 bg-orange-400 text-white hover:bg-orange-500',
+			danger: 'border-red-500 bg-red-500 text-white hover:bg-red-600',
 		},
 	},
 });
@@ -62,11 +61,16 @@ export const outlineButton = tv({
 	base: 'ring-1',
 	variants: {
 		color: {
-			primary: 'border-blue-500 bg-white text-blue-500',
-			secondary: 'border-gray-900 bg-white text-gray-900',
-			success: 'border-green-500 bg-white text-green-500',
-			warning: 'border-yellow-400 bg-white text-yellow-400',
-			danger: 'border-red-500 bg-white text-red-500',
+			primary: 'border-blue-500 bg-white text-blue-500 hover:bg-blue-100',
+			secondary: 'border-gray-900 bg-white text-gray-900 hover:bg-gray-100',
+			success: 'border-green-500 bg-white text-green-500 hover:bg-green-50',
+			warning: 'border-orange-400 bg-white text-orange-400 hover:bg-orange-50',
+			danger: 'border-red-500 bg-white text-red-500 hover:bg-red-50',
 		},
 	},
+});
+
+export const disabledButton = tv({
+	extend: baseButton,
+	base: 'bg-gray-300 border-gray-500 text-gray-500 cursor-not-allowed',
 });
