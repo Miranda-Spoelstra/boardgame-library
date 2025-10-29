@@ -1,23 +1,18 @@
 import {
 	useAddBoardgameMutation,
-	useFetchBoardgamesQuery,
-	useRemoveBoardgameMutation,
+	useFetchBoardgamesQuery
 } from '../../store';
 import Button from '../../components/button/Button';
-import { TbPlus, TbTrash } from 'react-icons/tb';
+import { TbPlus } from 'react-icons/tb';
 import type { Boardgame } from '../../types/boardgame';
+import BoardgamePanel from '../../components/BoardGamePanel';
 
 export default function HomePage() {
 	const { data, error, isFetching } = useFetchBoardgamesQuery();
-	const [addBoardgame, addResults] = useAddBoardgameMutation();
-	const [removeBoardGame, removeResults] = useRemoveBoardgameMutation();
+	const [addBoardgame, results] = useAddBoardgameMutation();
 
 	const handleAddBoardgame = () => {
 		addBoardgame('');
-	};
-
-	const handleRemoveBoardGame = (boardgame: Boardgame) => {
-		removeBoardGame(boardgame);
 	};
 
 	let content: React.ReactNode;
@@ -28,16 +23,7 @@ export default function HomePage() {
 	} else {
 		content = data?.map((boardgame: Boardgame) => {
 			return (
-				<div key={boardgame.id} className='m-2'>
-					<Button
-						buttonStyle={{ color: 'danger', rounded: 'xs', size: 'xs' }}
-						leftIcon={<TbTrash />}
-						buttonVariant='outline'
-						className='mr-2'
-						onClick={() => handleRemoveBoardGame(boardgame)}
-					></Button>
-					{boardgame.name}
-				</div>
+				<BoardgamePanel key={boardgame.id} boardgame={boardgame}></BoardgamePanel>
 			);
 		});
 	}
@@ -50,7 +36,7 @@ export default function HomePage() {
 					Add Boardgame
 				</Button>
 			</div>
-			<div className='flex flex-row flex-wrap'>{content}</div>
+			<div className='grid grid-cols-3 gap-4 my-4'>{content}</div>
 		</div>
 	);
 }
