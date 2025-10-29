@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { faker } from '@faker-js/faker';
 import type { Boardgame } from '../../types/boardgame';
 type BoardgameResponse = Boardgame[];
 
@@ -31,12 +30,12 @@ const boardgamesApi = createApi({
 			}),
 			addBoardgame: builder.mutation({
 				invalidatesTags: () => [{ type: 'Boardgames', id: 'LIST' }],
-				query: () => {
+				query: (name: string) => {
 					return {
 						url: '/boardgames',
 						method: 'POST',
 						body: {
-							name: faker.commerce.productName(),
+							name
 						},
 					};
 				},

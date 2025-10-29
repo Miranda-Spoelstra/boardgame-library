@@ -2,11 +2,17 @@
   "boardgames": [
     {
       "id": "123",
-      "name": "Ark Nova"
+      "name": "Ark Nova",
+      "publisher": "test"
     },
     {
       "id": "234",
-      "name": "Scout"
+      "name": "Scout",
+      "publisher": "test"
+    },
+    {
+      "id": "95d5",
+      "name": "teste"
     }
   ],
   "favorites": []

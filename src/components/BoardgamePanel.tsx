@@ -25,7 +25,7 @@ export default function BoardgamePanel(props: BoardgamePanelProps) {
 				className='mr-2'
 				onClick={() => handleRemoveBoardGame(boardgame)}
 			></Button>
-			{boardgame.name}
+			{boardgame.name} - {boardgame.publisher}
 		</Panel>
 	);
 }
