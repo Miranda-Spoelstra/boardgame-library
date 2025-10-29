@@ -8,19 +8,19 @@ import { TbPlus, TbTrash } from 'react-icons/tb';
 import type { Boardgame } from '../../types/boardgame';
 
 export default function HomePage() {
-	const { data, error, isFetching } = useFetchBoardgamesQuery('all');
+	const { data, error, isFetching } = useFetchBoardgamesQuery();
 	const [addBoardgame, addResults] = useAddBoardgameMutation();
-	// const [removeBoardGame, removeResults] = useRemoveBoardgameMutation();
+	const [removeBoardGame, removeResults] = useRemoveBoardgameMutation();
 
 	const handleAddBoardgame = () => {
 		addBoardgame('');
 	};
 
-	// const handleRemoveBoardGame = (id: string) => {
-	// 	removeBoardGame(id);
-	// };
+	const handleRemoveBoardGame = (boardgame: Boardgame) => {
+		removeBoardGame(boardgame);
+	};
 
-	let content;
+	let content: React.ReactNode;
 	if (isFetching) {
 		content = <div>Loading...</div>;
 	} else if (error) {
@@ -29,13 +29,13 @@ export default function HomePage() {
 		content = data?.map((boardgame: Boardgame) => {
 			return (
 				<div key={boardgame.id} className='m-2'>
-          {/* {boardgame.id} {boardgame.name}
 					<Button
-						className='mr-2'
 						buttonStyle={{ color: 'danger', rounded: 'xs', size: 'xs' }}
 						leftIcon={<TbTrash />}
-						onClick={() => handleRemoveBoardGame(boardgame.id)}
-					></Button> */}
+						buttonVariant='outline'
+						className='mr-2'
+						onClick={() => handleRemoveBoardGame(boardgame)}
+					></Button>
 					{boardgame.name}
 				</div>
 			);
