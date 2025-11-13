@@ -4,7 +4,6 @@ import { useFetchBoardgamesQuery } from '../../store';
 import Button from '../../components/button/Button';
 import BoardgamePanel from '../../components/BoardgamePanel';
 import AddBoardgameForm from './AddBoardgameForm';
-import { TbPlus } from 'react-icons/tb';
 
 export default function HomePage() {
 	const [showForm, setShowForm] = useState(false);
@@ -24,10 +23,10 @@ export default function HomePage() {
 	return (
 		<div>
 			<div id='header' className='flex justify-between bg-teal-800 py-4 px-6'>
-				<h1 className='text-2xl font-bold text-white'>Board Game List</h1>
+				<h1 className='text-2xl font-bold text-white'>Boardgame Library</h1>
 				<Button
 					buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
-					leftIcon={<TbPlus />}
+					className='border border-teal-700'
 					onClick={() => setShowForm(!showForm)}
 				>
 					Add Boardgame

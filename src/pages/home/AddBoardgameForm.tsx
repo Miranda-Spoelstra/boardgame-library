@@ -35,7 +35,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 	};
 
 	const inputClasses =
-		'border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 px-4 py-2';
+		'border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 px-4 py-2 focus:border-teal-500 focus:outline-none focus:ring-0';
 
 	return (
 		<Panel className='my-4'>
