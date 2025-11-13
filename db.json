@@ -11,8 +11,18 @@
       "publisher": "test"
     },
     {
-      "id": "95d5",
-      "name": "teste"
+      "id": "b3b6",
+      "name": "testt",
+      "publisher": "test"
+    },
+    {
+      "id": "fd60",
+      "name": "Bloomtown",
+      "publisher": "Unknown",
+      "playerCount": "2-5",
+      "duration": "45min",
+      "mechanics": "Tile laying",
+      "age": "10+"
     }
   ],
   "favorites": []

@@ -30,19 +30,26 @@ const boardgamesApi = createApi({
 			}),
 			addBoardgame: builder.mutation({
 				invalidatesTags: () => [{ type: 'Boardgames', id: 'LIST' }],
-				query: (name: string) => {
+				query: (boardgame: Boardgame) => {
+					const { name, publisher, playerCount, duration, mechanics, age } =
+						boardgame;
 					return {
 						url: '/boardgames',
 						method: 'POST',
 						body: {
-							name
+							name,
+							publisher,
+							playerCount,
+							duration,
+							mechanics,
+							age,
 						},
 					};
 				},
 			}),
 			removeBoardgame: builder.mutation({
 				invalidatesTags: () => [{ type: 'Boardgames', id: 'LIST' }],
-				query: (boardgame) => {
+				query: (boardgame: Boardgame) => {
 					return {
 						url: `/boardgames/${boardgame.id}`,
 						method: 'DELETE',

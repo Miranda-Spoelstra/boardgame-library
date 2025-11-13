@@ -1,17 +1,20 @@
+import type { Boardgame } from '../../types/boardgame';
 import { useState } from 'react';
-import Panel from '../../components/Panel';
 import { useAddBoardgameMutation } from '../../store';
+import Panel from '../../components/Panel';
 import Button from '../../components/button/Button';
+import { TbPlus } from 'react-icons/tb';
 
 interface AddBoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function AddBoardgameForm(props: AddBoardgameFormProps) {
-	const initialState = {
+	const initialState: Boardgame = {
+		id: '',
 		name: '',
 		publisher: '',
-		playerCount: 0,
+		playerCount: '',
 		duration: '',
 		mechanics: [''],
 		age: '',
@@ -20,10 +23,9 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 	const [formData, setFormData] = useState(initialState);
 	const [addBoardgame, results] = useAddBoardgameMutation();
 
-	// todo: save all form data instead of just name
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		addBoardgame(formData.name);
+		addBoardgame(formData);
 		setShowForm(false);
 		setFormData(initialState);
 	};
@@ -38,8 +40,8 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 	return (
 		<Panel className='my-4'>
 			<h1 className='text-xl'>Add new boardgame</h1>
-			<form onSubmit={handleSubmit}>
-				<label className='font-bold mr-4' htmlFor='name'>
+			<form onSubmit={handleSubmit} className='flex flex-col'>
+				<label className='font-bold mt-4' htmlFor='name'>
 					Name
 				</label>
 				<input
@@ -49,7 +51,8 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 					value={formData.name}
 					onChange={handleChange}
 				></input>
-				<label className='font-bold mr-4' htmlFor='publisher'>
+
+				<label className='font-bold mt-4' htmlFor='publisher'>
 					Publisher
 				</label>
 				<input
@@ -59,7 +62,59 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 					value={formData.publisher}
 					onChange={handleChange}
 				></input>
-				<Button>Submit</Button>
+
+				<label className='font-bold mt-4' htmlFor='playerCount'>
+					Player Count
+				</label>
+				<input
+					className={inputClasses}
+					id='playerCount'
+					name='playerCount'
+					value={formData.playerCount}
+					onChange={handleChange}
+				></input>
+
+				<label className='font-bold mt-4' htmlFor='duration'>
+					Duration
+				</label>
+				<input
+					className={inputClasses}
+					id='duration'
+					name='duration'
+					value={formData.duration}
+					onChange={handleChange}
+				></input>
+
+				{/* Todo: Create multiselect or add a new input for each mechanic */}
+				<label className='font-bold mt-4' htmlFor='mechanics'>
+					Mechanics
+				</label>
+				<input
+					className={inputClasses}
+					id='mechanics'
+					name='mechanics'
+					value={formData.mechanics}
+					onChange={handleChange}
+				></input>
+
+				<label className='font-bold mt-4' htmlFor='age'>
+					Recommended age
+				</label>
+				<input
+					className={inputClasses}
+					id='age'
+					name='age'
+					value={formData.age}
+					onChange={handleChange}
+				></input>
+
+				<Button
+					className='mt-4'
+					buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
+					leftIcon={<TbPlus />}
+				>
+					Add Boardgame
+				</Button>
 			</form>
 		</Panel>
 	);
