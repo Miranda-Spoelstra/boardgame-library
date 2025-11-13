@@ -35,7 +35,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 	};
 
 	const inputClasses =
-		'border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 px-4 py-2 focus:border-teal-500 focus:outline-none focus:ring-0';
+		'border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:border-teal-500 focus:outline-none focus:ring-0';
 
 	return (
 		<Panel className='my-4'>
@@ -110,6 +110,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 					onChange={handleChange}
 				></input>
 
+				{/* Todo: add button to add another one */}
 				<Button
 					className='mt-4'
 					buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}

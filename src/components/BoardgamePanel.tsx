@@ -26,6 +26,7 @@ export default function BoardgamePanel(props: BoardgamePanelProps) {
 					onClick={() => handleRemoveBoardGame(boardgame)}
 				></Button>
 			</div>
+			
 			<div className='flex flex-col gap-2 pt-2'>
 				<div className='flex flex-row gap-2'>
 					<h3 className='font-bold'>Publisher:</h3>
