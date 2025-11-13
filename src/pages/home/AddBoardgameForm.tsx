@@ -16,7 +16,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 		publisher: '',
 		playerCount: '',
 		duration: '',
-		mechanics: [''],
+		mechanics: '',
 		age: '',
 	};
 	const { setShowForm } = props;
@@ -39,7 +39,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 
 	return (
 		<Panel className='my-4'>
-			<h1 className='text-xl'>Add new boardgame</h1>
+			<h1 className='text-xl border-b-2 border-teal-200'>Add a new boardgame</h1>
 			<form onSubmit={handleSubmit} className='flex flex-col'>
 				<label className='font-bold mt-4' htmlFor='name'>
 					Name

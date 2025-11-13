@@ -47,11 +47,11 @@ export const solidButton = tv({
 	extend: baseButton,
 	variants: {
 		color: {
-			primary: 'border-blue-500 bg-blue-500 text-white hover:bg-blue-600',
-			secondary: 'border-gray-900 bg-gray-900 text-white hover:bg-gray-800',
-			success: 'border-green-500 bg-green-500 text-white hover:bg-green-600',
-			warning: 'border-orange-400 bg-orange-400 text-white hover:bg-orange-500',
-			danger: 'border-red-500 bg-red-500 text-white hover:bg-red-600',
+			primary: 'border-teal-500 bg-teal-500 text-white hover:bg-teal-400',
+			secondary: 'border-teal-200 bg-teal-200 text-white hover:bg-teal-300',
+			success: 'border-teal-800 bg-teal-800 text-white hover:bg-teal-700',
+			warning: 'border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-400',
+			danger: 'border-red-500 bg-red-500 text-white hover:bg-red-400',
 		},
 	},
 });
@@ -61,11 +61,11 @@ export const outlineButton = tv({
 	base: 'ring-1',
 	variants: {
 		color: {
-			primary: 'border-blue-500 bg-white text-blue-500 hover:bg-blue-100',
-			secondary: 'border-gray-900 bg-white text-gray-900 hover:bg-gray-100',
-			success: 'border-green-500 bg-white text-green-500 hover:bg-green-50',
-			warning: 'border-orange-400 bg-white text-orange-400 hover:bg-orange-50',
-			danger: 'border-red-500 bg-white text-red-500 hover:bg-red-50',
+			primary: 'border-teal-500 bg-white text-teal-500 hover:bg-gray-100',
+			secondary: 'border-teal-200 bg-white text-teal-200 hover:bg-gray-100',
+			success: 'border-teal-800 bg-white text-teal-800 hover:bg-gray-100',
+			warning: 'border-yellow-500 bg-white text-yellow-500 hover:bg-gray-100',
+			danger: 'border-red-500 bg-white text-red-500 hover:bg-gray-100',
 		},
 	},
 });

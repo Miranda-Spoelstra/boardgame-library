@@ -4,6 +4,6 @@ export interface Boardgame {
 	publisher: string;
 	playerCount: string;
 	duration: string;
-	mechanics: string[];
+	mechanics: string;
 	age: string;
 }

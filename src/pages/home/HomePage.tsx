@@ -1,10 +1,10 @@
 import type { Boardgame } from '../../types/boardgame';
 import { useState } from 'react';
-import { TbPlus } from 'react-icons/tb';
 import { useFetchBoardgamesQuery } from '../../store';
 import Button from '../../components/button/Button';
 import BoardgamePanel from '../../components/BoardgamePanel';
 import AddBoardgameForm from './AddBoardgameForm';
+import { TbPlus } from 'react-icons/tb';
 
 export default function HomePage() {
 	const [showForm, setShowForm] = useState(false);
@@ -22,15 +22,21 @@ export default function HomePage() {
 	}
 
 	return (
-		<div className='container my-6 mx-auto'>
-			<div className='flex justify-between'>
-				<h1 className='text-2xl font-bold'>Board Game List</h1>
-				<Button leftIcon={<TbPlus />} onClick={() => setShowForm(!showForm)}>
+		<div>
+			<div id='header' className='flex justify-between bg-teal-800 py-4 px-6'>
+				<h1 className='text-2xl font-bold text-white'>Board Game List</h1>
+				<Button
+					buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
+					leftIcon={<TbPlus />}
+					onClick={() => setShowForm(!showForm)}
+				>
 					Add Boardgame
 				</Button>
 			</div>
-			{showForm && <AddBoardgameForm setShowForm={setShowForm} />}
-			<div className='grid grid-cols-3 gap-4 my-4'>{content}</div>
+			<div id='page' className='container py-6 mx-auto'>
+				{showForm && <AddBoardgameForm setShowForm={setShowForm} />}
+				<div className='grid grid-cols-3 gap-4 my-4'>{content}</div>
+			</div>
 		</div>
 	);
 }

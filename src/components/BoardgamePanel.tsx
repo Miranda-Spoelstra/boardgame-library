@@ -17,15 +17,14 @@ export default function BoardgamePanel(props: BoardgamePanelProps) {
 	};
 
 	return (
-		<Panel>
+		<Panel className='flex justify-between'>
+			{boardgame.name} - {boardgame.publisher}
 			<Button
-				buttonStyle={{ color: 'danger', rounded: 'xs', size: 'xs' }}
+				buttonStyle={{ color: 'danger', rounded: 'sm', size: 'sm' }}
 				leftIcon={<TbTrash />}
-				buttonVariant='outline'
 				className='mr-2'
 				onClick={() => handleRemoveBoardGame(boardgame)}
 			></Button>
-			{boardgame.name} - {boardgame.publisher}
 		</Panel>
 	);
 }
