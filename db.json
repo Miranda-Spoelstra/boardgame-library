@@ -3,20 +3,28 @@
     {
       "id": "123",
       "name": "Ark Nova",
-      "publisher": "test"
+      "publisher": "Feuerland Spiele",
+      "playerCount": "1-4",
+      "duration": "90-150 min",
+      "mechanics": "Hand Management, Hexagon Grid, End Game Bonuses, Race, Set Collection",
+      "age": "14+"
     },
     {
       "id": "234",
       "name": "Scout",
-      "publisher": "test"
+      "publisher": "Oink Games",
+      "playerCount": "2-5",
+      "duration": "20 min",
+      "mechanics": "Hand Management, Ladder Climbing, Score-and-Reset Game",
+      "age": "9+"
     },
     {
       "id": "fd60",
-      "name": "Bloomtown",
-      "publisher": "Unknown",
-      "playerCount": "2-5",
-      "duration": "45min",
-      "mechanics": "Tile laying",
+      "name": "Catan",
+      "publisher": "KOSMOS",
+      "playerCount": "3-4",
+      "duration": "60-120 min",
+      "mechanics": "Dice Rolling, Hexagon Grid, Hidden Victory Points",
       "age": "10+"
     }
   ],

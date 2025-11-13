@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAddBoardgameMutation } from '../../store';
 import Panel from '../../components/Panel';
 import Button from '../../components/button/Button';
-import { TbPlus } from 'react-icons/tb';
+import { FaPlus } from 'react-icons/fa';
 
 interface AddBoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -39,7 +39,9 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 
 	return (
 		<Panel className='my-4'>
-			<h1 className='text-xl border-b-2 border-teal-200'>Add a new boardgame</h1>
+			<h1 className='text-xl border-b-2 border-teal-200 pb-2'>
+				Add a new boardgame
+			</h1>
 			<form onSubmit={handleSubmit} className='flex flex-col'>
 				<label className='font-bold mt-4' htmlFor='name'>
 					Name
@@ -75,7 +77,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 				></input>
 
 				<label className='font-bold mt-4' htmlFor='duration'>
-					Duration
+					Average Duration
 				</label>
 				<input
 					className={inputClasses}
@@ -111,7 +113,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 				<Button
 					className='mt-4'
 					buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
-					leftIcon={<TbPlus />}
+					leftIcon={<FaPlus />}
 				>
 					Add Boardgame
 				</Button>

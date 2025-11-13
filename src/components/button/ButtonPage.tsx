@@ -1,5 +1,5 @@
 import Button from './Button';
-import { TbTrash } from 'react-icons/tb';
+import { FaTrash } from 'react-icons/fa';
 
 export default function ButtonPage() {
 	return (
@@ -7,19 +7,19 @@ export default function ButtonPage() {
 			<div className='p-6 space-x-4 flex-wrap'>
 				<Button
 					buttonStyle={{ color: 'primary', rounded: 'lg', size: 'md' }}
-					leftIcon={<TbTrash />}
+					leftIcon={<FaTrash />}
 				>
 					Click
 				</Button>
 				<Button
 					buttonStyle={{ color: 'secondary', rounded: 'lg', size: 'md' }}
-					rightIcon={<TbTrash />}
+					rightIcon={<FaTrash />}
 				>
 					Click
 				</Button>
 				<Button
 					buttonStyle={{ color: 'danger', rounded: 'lg', size: 'lg' }}
-					rightIcon={<TbTrash />}
+					rightIcon={<FaTrash />}
 				></Button>
 				<Button
 					buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
@@ -29,7 +29,7 @@ export default function ButtonPage() {
 				</Button>
 				<Button
 					buttonStyle={{ color: 'secondary', rounded: 'lg', size: 'md' }}
-					leftIcon={<TbTrash />}
+					leftIcon={<FaTrash />}
 					isLoading={true}
 				>
 					Click
