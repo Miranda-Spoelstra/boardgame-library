@@ -1,5 +1,5 @@
 import { type VariantProps } from 'tailwind-variants';
-import { TbLoader } from 'react-icons/tb';
+import { FaSpinner } from 'react-icons/fa';
 import { solidButton, outlineButton, disabledButton } from './ButtonStyles';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -47,7 +47,7 @@ export default function Button(props: ButtonProps) {
 			}`}
 		>
 			{isLoading ? (
-				<TbLoader className='animate-spin' size={25} />
+				<FaSpinner className='animate-spin' size={25} />
 			) : (
 				rightIcon || leftIcon
 			)}

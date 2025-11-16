@@ -41,7 +41,6 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(isEdit);
 		if (isEdit) {
 			editBoardgame(formData);
 		} else {
@@ -73,6 +72,7 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 					onClick={handleClose}
 				/>
 			</div>
+			
 			<form onSubmit={handleSubmit}>
 				<div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
 					<div className='flex flex-col'>
@@ -149,7 +149,8 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 						></input>
 					</div>
 				</div>
-				<div className='flex justify-center'>
+
+				<div className='flex justify-end'>
 					<Button
 						className='mt-4'
 						buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
