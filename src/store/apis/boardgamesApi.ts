@@ -47,6 +47,18 @@ const boardgamesApi = createApi({
 					};
 				},
 			}),
+			editBoardgame: builder.mutation({
+				invalidatesTags: (result, error, boardgame) => [
+					{ type: 'Boardgames', id: boardgame.id },
+				],
+				query: ({ id, ...data }) => {
+					return {
+						url: `/boardgames/${id}`,
+						method: 'PATCH',
+						body: data,
+					};
+				},
+			}),
 			removeBoardgame: builder.mutation({
 				invalidatesTags: () => [{ type: 'Boardgames', id: 'LIST' }],
 				query: (boardgame: Boardgame) => {
@@ -63,6 +75,7 @@ const boardgamesApi = createApi({
 export const {
 	useFetchBoardgamesQuery,
 	useAddBoardgameMutation,
+	useEditBoardgameMutation,
 	useRemoveBoardgameMutation,
 } = boardgamesApi;
 export { boardgamesApi };

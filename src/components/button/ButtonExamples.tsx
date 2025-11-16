@@ -1,7 +1,7 @@
 import Button from './Button';
 import { FaTrash } from 'react-icons/fa';
 
-export default function ButtonPage() {
+export default function ButtonExamples() {
 	return (
 		<div>
 			<div className='p-6 space-x-4 flex-wrap'>
@@ -18,7 +18,7 @@ export default function ButtonPage() {
 					Click
 				</Button>
 				<Button
-					buttonStyle={{ color: 'danger', rounded: 'lg', size: 'lg' }}
+					buttonStyle={{ color: 'danger', rounded: 'sm', size: 'sm' }}
 					rightIcon={<FaTrash />}
 				></Button>
 				<Button
@@ -35,10 +35,10 @@ export default function ButtonPage() {
 					Click
 				</Button>
 				<Button
-					buttonStyle={{ color: 'danger', rounded: 'md', size: 'xs' }}
+					buttonStyle={{ color: 'danger', rounded: 'md', size: 'sm' }}
 					disabled={true}
 				>
-					Click
+					Disabled
 				</Button>
 				<Button>Default</Button>
 			</div>

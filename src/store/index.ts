@@ -14,5 +14,6 @@ setupListeners(store.dispatch);
 export {
 	useFetchBoardgamesQuery,
 	useAddBoardgameMutation,
+	useEditBoardgameMutation,
 	useRemoveBoardgameMutation,
 } from './apis/boardgamesApi';

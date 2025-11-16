@@ -72,5 +72,5 @@ export const outlineButton = tv({
 
 export const disabledButton = tv({
 	extend: baseButton,
-	base: 'bg-gray-300 border-gray-500 text-gray-500 cursor-not-allowed',
+	base: 'bg-gray-400 border-gray-400 text-gray-600 cursor-not-allowed',
 });
