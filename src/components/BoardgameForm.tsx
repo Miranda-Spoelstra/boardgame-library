@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
-import { FaPlus, FaTimes } from 'react-icons/fa';
+import { FaPencilAlt, FaPlus, FaTimes } from 'react-icons/fa';
 
 interface BoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -74,7 +74,7 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 				/>
 			</div>
 			<form onSubmit={handleSubmit}>
-				<div className='grid grid-cols-2 gap-x-4'>
+				<div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
 					<div className='flex flex-col'>
 						<label className='font-bold mt-4' htmlFor='name'>
 							Name
@@ -125,7 +125,6 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 						></input>
 					</div>
 					<div className='flex flex-col'>
-						{/* Todo: Create multiselect or add a new input for each mechanic */}
 						<label className='font-bold mt-4' htmlFor='mechanics'>
 							Mechanics
 						</label>
@@ -150,12 +149,11 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 						></input>
 					</div>
 				</div>
-				{/* Todo: add button to add another game after submitting */}
 				<div className='flex justify-center'>
 					<Button
 						className='mt-4'
 						buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
-						leftIcon={<FaPlus />}
+						leftIcon={isEdit ? <FaPencilAlt /> : <FaPlus />}
 					>
 						{isEdit ? 'Update' : 'Add Boardgame'}
 					</Button>
