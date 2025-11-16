@@ -1,8 +1,8 @@
-import type { Boardgame } from '../../types/boardgame';
+import type { Boardgame } from '../types/boardgame';
 import { useState } from 'react';
-import { useAddBoardgameMutation } from '../../store';
-import Panel from '../../components/Panel';
-import Button from '../../components/button/Button';
+import { useAddBoardgameMutation } from '../store';
+import Panel from './Panel';
+import Button from './button/Button';
 import { FaPlus } from 'react-icons/fa';
 
 interface AddBoardgameFormProps {
@@ -21,13 +21,14 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 	};
 	const { setShowForm } = props;
 	const [formData, setFormData] = useState(initialState);
+	const [showValidation, setShowValidation] = useState(false);
 	const [addBoardgame, results] = useAddBoardgameMutation();
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		setShowValidation(false);
 		addBoardgame(formData);
 		setShowForm(false);
-		setFormData(initialState);
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +53,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 					name='name'
 					value={formData.name}
 					onChange={handleChange}
+					required
 				></input>
 
 				<label className='font-bold mt-4' htmlFor='publisher'>
@@ -110,7 +112,7 @@ export default function AddBoardgameForm(props: AddBoardgameFormProps) {
 					onChange={handleChange}
 				></input>
 
-				{/* Todo: add button to add another one */}
+				{/* Todo: add button to add another game after submitting */}
 				<Button
 					className='mt-4'
 					buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
