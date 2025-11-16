@@ -1,3 +1,4 @@
+import type { Boardgame } from '../types/boardgame';
 import Button from './button/Button';
 import { VscSearch } from 'react-icons/vsc';
 
@@ -6,14 +7,20 @@ interface HeaderProps {
 	setTerm: React.Dispatch<React.SetStateAction<string>>;
 	showForm: boolean;
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
+	setEditData: React.Dispatch<React.SetStateAction<Boardgame | undefined>>;
 }
 
 export default function Header(props: HeaderProps) {
-	const { term, setTerm, showForm, setShowForm } = props;
+	const { term, setTerm, showForm, setShowForm, setEditData } = props;
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 	};
+
+	const handleClick = () => {
+		setShowForm(!showForm);
+		setEditData(undefined);
+	}
 
 	return (
 		<div className='flex justify-between bg-teal-800 py-4 px-6'>
@@ -38,9 +45,9 @@ export default function Header(props: HeaderProps) {
 				<Button
 					buttonStyle={{ color: 'success', rounded: 'sm', size: 'sm' }}
 					className='border border-teal-700'
-					onClick={() => setShowForm(!showForm)}
+					onClick={() => handleClick()}
 				>
-					Add Boardgame
+					{showForm ? 'Close Form' : 'Add Boardgame'}
 				</Button>
 			</div>
 		</div>
