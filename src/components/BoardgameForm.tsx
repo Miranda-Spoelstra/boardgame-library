@@ -25,9 +25,10 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 	const [formData, setFormData] = useState(initialData);
 	const [isEdit, setIsEdit] = useState(false);
 
-	const [addBoardgame, addResults] = useAddBoardgameMutation();
-	const [editBoardgame, editResults] = useEditBoardgameMutation();
+	const [addBoardgame] = useAddBoardgameMutation();
+	const [editBoardgame] = useEditBoardgameMutation();
 
+	// If the data to edit is different, show new edit data
 	if (editData && editData.id !== formData.id) {
 		setFormData(editData);
 		setIsEdit(true);
@@ -72,7 +73,7 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 					onClick={handleClose}
 				/>
 			</div>
-			
+
 			<form onSubmit={handleSubmit}>
 				<div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
 					<div className='flex flex-col'>

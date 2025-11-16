@@ -11,7 +11,7 @@ interface BoardgamePanelProps {
 
 export default function BoardgamePanel(props: BoardgamePanelProps) {
 	const { boardgame, editBoardgame } = props;
-	const [removeBoardgame, results] = useRemoveBoardgameMutation();
+	const [removeBoardgame] = useRemoveBoardgameMutation();
 
 	return (
 		<Panel>
