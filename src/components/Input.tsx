@@ -1,6 +1,7 @@
 interface InputProps {
 	name: string;
 	value: string;
+  type?: string;
 	label?: string;
 	placeholder?: string;
 	required?: boolean;
@@ -9,7 +10,7 @@ interface InputProps {
 }
 
 export default function Input(props: InputProps) {
-	const { name, value, label, placeholder, required, onChange, className } =
+	const { name, value, type='text', label, placeholder, required, onChange, className } =
 		props;
 
 	return (
@@ -24,6 +25,7 @@ export default function Input(props: InputProps) {
 				placeholder={placeholder}
 				name={name}
 				value={value}
+        type={type}
 				required={required}
 				onChange={onChange}
 			></input>

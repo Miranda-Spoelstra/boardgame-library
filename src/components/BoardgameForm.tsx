@@ -109,6 +109,7 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 					<Input
 						name='age'
 						value={formData.age}
+						type='number'
 						label='Recommended age'
 						placeholder='Enter age'
 						onChange={(e) => handleChange(e)}

@@ -50,7 +50,7 @@ export default function BoardgamePanel(props: BoardgamePanelProps) {
 				</div>
 				<div className='flex flex-row gap-2'>
 					<h3 className='font-bold'>Recommended Age:</h3>
-					<p>{boardgame.age || '-'}</p>
+					<p>{`${boardgame.age}+` || '-'}</p>
 				</div>
 			</div>
 		</Panel>
