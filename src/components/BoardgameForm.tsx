@@ -1,10 +1,10 @@
 import type { Boardgame } from '../types/boardgame';
 import { useState } from 'react';
+import { FaPencilAlt, FaPlus, FaTimes } from 'react-icons/fa';
 import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
 import Input from './Input';
-import { FaPencilAlt, FaPlus, FaTimes } from 'react-icons/fa';
 
 interface BoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -76,42 +76,42 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 						label='Name'
 						placeholder='Enter name'
 						required={true}
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 					<Input
 						name='publisher'
 						value={formData.publisher}
 						label='Publisher'
 						placeholder='Enter publisher'
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 					<Input
 						name='playerCount'
 						value={formData.playerCount}
 						label='Player Count'
 						placeholder='Enter player count'
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 					<Input
 						name='duration'
 						value={formData.duration}
 						label='Average duration'
 						placeholder='Enter average duration'
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 					<Input
 						name='mechanics'
 						value={formData.mechanics}
 						label='Mechanics'
 						placeholder='Enter mechanics'
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 					<Input
 						name='age'
 						value={formData.age}
 						label='Recommended age'
 						placeholder='Enter age'
-						handleChange={(e) => handleChange(e)}
+						onChange={(e) => handleChange(e)}
 					/>
 				</div>
 

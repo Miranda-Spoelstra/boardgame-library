@@ -4,11 +4,13 @@ interface InputProps {
 	label?: string;
 	placeholder?: string;
 	required?: boolean;
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	className?: string;
 }
 
 export default function Input(props: InputProps) {
-  const { name, value, label, placeholder, required, handleChange } = props;
+	const { name, value, label, placeholder, required, onChange, className } =
+		props;
 
 	return (
 		<div className='flex flex-col'>
@@ -18,12 +20,12 @@ export default function Input(props: InputProps) {
 				</label>
 			)}
 			<input
-				className='border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:outline-teal-400 focus:outline-2 focus:ring-0 placeholder:text-gray-500'
+				className={`border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:outline-teal-400 focus:outline-2 focus:ring-0 placeholder:text-gray-500 ${className}`}
 				placeholder={placeholder}
 				name={name}
 				value={value}
 				required={required}
-				onChange={handleChange}
+				onChange={onChange}
 			></input>
 		</div>
 	);
