@@ -1,6 +1,7 @@
 import type { Boardgame } from '../types/boardgame';
 import { useState, type SyntheticEvent } from 'react';
 import { FaPlus, FaTimes, FaSave } from 'react-icons/fa';
+import { FaArrowsRotate } from 'react-icons/fa6';
 import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
@@ -49,25 +50,28 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 		resetForm(event.nativeEvent.submitter?.id === 'another');
 	};
 
-	const handleClose = () => {
-		resetForm();
-	};
-
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
 	return (
 		<Panel className='my-4'>
-			<div className='flex flex-row border-b-2 border-teal-200 pb-2 justify-between'>
+			<div className='flex border-b-2 border-teal-200 pb-2 justify-between'>
 				<h1 className='text-xl'>
 					{isEdit ? 'Edit boardgame' : 'Add a new boardgame'}
 				</h1>
-				<Button
-					buttonStyle={{ color: 'danger', rounded: 'sm', size: 'xs' }}
-					leftIcon={<FaTimes />}
-					onClick={handleClose}
-				/>
+				<div className='flex flex-row gap-2'>
+					<Button
+						buttonStyle={{ color: 'warning', rounded: 'sm', size: 'xs' }}
+						leftIcon={<FaArrowsRotate />}
+						onClick={() => resetForm(true)}
+					/>
+					<Button
+						buttonStyle={{ color: 'danger', rounded: 'sm', size: 'xs' }}
+						leftIcon={<FaTimes />}
+						onClick={() => resetForm()}
+					/>
+				</div>
 			</div>
 
 			<form onSubmit={handleSubmit}>
