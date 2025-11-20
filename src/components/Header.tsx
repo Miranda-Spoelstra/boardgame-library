@@ -1,6 +1,7 @@
 import type { Boardgame } from '../types/boardgame';
-import Button from './button/Button';
 import { VscSearch } from 'react-icons/vsc';
+import Button from './button/Button';
+import Input from './formElements/Input';
 
 interface HeaderProps {
 	term: string;
@@ -26,11 +27,12 @@ export default function Header(props: HeaderProps) {
 					<div className='absolute inset-y-0 flex items-center pl-3'>
 						<VscSearch className='h-4 w-4 text-gray-500' />
 					</div>
-					<input
+					<Input
 						value={term}
-						onChange={(e) => setTerm(e.target.value)}
-						className='pl-9 py-2 w-full border-0 shadow-none rounded-[4px] focus:outline-teal-400 focus:outline-2 focus:ring-0 placeholder:text-gray-500'
+						name='search'
 						placeholder='Search'
+						onChange={(e) => setTerm(e.target.value)}
+						className='pl-9'
 					/>
 				</form>
 				<Button

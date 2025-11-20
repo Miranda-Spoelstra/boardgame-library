@@ -1,0 +1,34 @@
+interface InputProps {
+	name: string;
+	value: string;
+  type?: string;
+	label?: string;
+	placeholder?: string;
+	required?: boolean;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	className?: string;
+}
+
+export default function Input(props: InputProps) {
+	const { name, value, type='text', label, placeholder, required, onChange, className } =
+		props;
+
+	return (
+		<div className='flex flex-col'>
+			{label && (
+				<label className='font-bold mt-4' htmlFor={name}>
+					{label}
+				</label>
+			)}
+			<input
+				className={`border border-gray-300 rounded-md shadow-sm px-4 py-2 focus:outline-teal-400 focus:outline-2 focus:ring-0 placeholder:text-gray-500 ${className}`}
+				placeholder={placeholder}
+				name={name}
+				value={value}
+        type={type}
+				required={required}
+				onChange={onChange}
+			></input>
+		</div>
+	);
+}

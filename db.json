@@ -7,7 +7,7 @@
       "playerCount": "1-4",
       "duration": "90-150 min",
       "mechanics": "Hand Management, Hexagon Grid, End Game Bonuses, Race, Set Collection",
-      "age": "14+"
+      "age": "14"
     },
     {
       "id": "234",
@@ -16,7 +16,7 @@
       "playerCount": "2-5",
       "duration": "20 min",
       "mechanics": "Hand Management, Ladder Climbing, Score-and-Reset Game",
-      "age": "9+"
+      "age": "9"
     },
     {
       "id": "fd60",
@@ -25,7 +25,7 @@
       "playerCount": "3-4",
       "duration": "60-120 min",
       "mechanics": "Dice Rolling, Hexagon Grid, Hidden Victory Points",
-      "age": "10+"
+      "age": "10"
     },
     {
       "id": "072a",
@@ -34,7 +34,7 @@
       "playerCount": "3-6",
       "duration": "30 min",
       "mechanics": "Communication Limits, Cooperative Game",
-      "age": "10+"
+      "age": "10"
     }
   ]
 }
