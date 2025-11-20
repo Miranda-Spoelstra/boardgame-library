@@ -5,7 +5,7 @@ import { FaArrowsRotate } from 'react-icons/fa6';
 import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
-import Input from './Input';
+import Input from './formElements/Input';
 
 interface BoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -55,25 +55,22 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 	};
 
 	return (
-		<Panel className='my-4'>
-			<div className='flex border-b-2 border-teal-200 pb-2 justify-between'>
-				<h1 className='text-xl'>
-					{isEdit ? 'Edit boardgame' : 'Add a new boardgame'}
-				</h1>
-				<div className='flex flex-row gap-2'>
-					<Button
-						buttonStyle={{ color: 'warning', rounded: 'sm', size: 'xs' }}
-						leftIcon={<FaArrowsRotate />}
-						onClick={() => resetForm(true)}
-					/>
-					<Button
-						buttonStyle={{ color: 'danger', rounded: 'sm', size: 'xs' }}
-						leftIcon={<FaTimes />}
-						onClick={() => resetForm()}
-					/>
-				</div>
-			</div>
-
+		<Panel
+			header={isEdit ? 'Edit boardgame' : 'Add a new boardgame'}
+			headerButtons={[
+				{
+					buttonStyle: { color: 'warning', rounded: 'sm', size: 'xs' },
+					icon: <FaArrowsRotate />,
+					onClick: () => resetForm(true),
+				},
+				{
+					buttonStyle: { color: 'danger', rounded: 'sm', size: 'xs' },
+					icon: <FaTimes />,
+					onClick: () => resetForm(),
+				},
+			]}
+			className='my-4'
+		>
 			<form onSubmit={handleSubmit}>
 				<div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
 					<Input

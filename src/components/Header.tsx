@@ -1,7 +1,7 @@
 import type { Boardgame } from '../types/boardgame';
 import { VscSearch } from 'react-icons/vsc';
 import Button from './button/Button';
-import Input from './Input';
+import Input from './formElements/Input';
 
 interface HeaderProps {
 	term: string;
