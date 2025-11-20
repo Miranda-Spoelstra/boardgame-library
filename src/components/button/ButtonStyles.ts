@@ -48,7 +48,7 @@ export const solidButton = tv({
 	variants: {
 		color: {
 			primary: 'border-teal-500 bg-teal-500 text-white hover:bg-teal-400',
-			secondary: 'border-teal-200 bg-teal-200 text-white hover:bg-teal-300',
+			secondary: 'border-teal-300 bg-teal-300 text-white hover:bg-teal-200',
 			success: 'border-teal-800 bg-teal-800 text-white hover:bg-teal-700',
 			warning: 'border-yellow-500 bg-yellow-500 text-white hover:bg-yellow-400',
 			danger: 'border-red-500 bg-red-500 text-white hover:bg-red-400',
@@ -62,7 +62,7 @@ export const outlineButton = tv({
 	variants: {
 		color: {
 			primary: 'border-teal-500 bg-white text-teal-500 hover:bg-gray-100',
-			secondary: 'border-teal-200 bg-white text-teal-200 hover:bg-gray-100',
+			secondary: 'border-teal-300 bg-white text-teal-300 hover:bg-gray-100',
 			success: 'border-teal-800 bg-white text-teal-800 hover:bg-gray-100',
 			warning: 'border-yellow-500 bg-white text-yellow-500 hover:bg-gray-100',
 			danger: 'border-red-500 bg-white text-red-500 hover:bg-gray-100',

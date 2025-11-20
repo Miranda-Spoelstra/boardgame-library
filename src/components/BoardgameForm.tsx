@@ -1,6 +1,6 @@
 import type { Boardgame } from '../types/boardgame';
-import { useState } from 'react';
-import { FaPencilAlt, FaPlus, FaTimes } from 'react-icons/fa';
+import { useState, type SyntheticEvent } from 'react';
+import { FaPlus, FaTimes, FaSave } from 'react-icons/fa';
 import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
@@ -35,16 +35,18 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 		setIsEdit(true);
 	}
 
-	const resetForm = () => {
-		setShowForm(false);
+	const resetForm = (keepOpen?: boolean) => {
+		keepOpen ? setIsEdit(false) : setShowForm(false);
 		setFormData(initialData);
 		setEditData(undefined);
 	};
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (
+		event: SyntheticEvent<HTMLFormElement, SubmitEvent>
+	) => {
 		event.preventDefault();
 		isEdit ? editBoardgame(formData) : addBoardgame(formData);
-		resetForm();
+		resetForm(event.nativeEvent.submitter?.id === 'another');
 	};
 
 	const handleClose = () => {
@@ -116,13 +118,20 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 					/>
 				</div>
 
-				<div className='flex justify-end'>
+				<div className='flex justify-end gap-2 mt-4'>
 					<Button
-						className='mt-4'
+						id='submit'
 						buttonStyle={{ color: 'primary', rounded: 'sm', size: 'sm' }}
-						leftIcon={isEdit ? <FaPencilAlt /> : <FaPlus />}
+						leftIcon={<FaSave />}
 					>
-						{isEdit ? 'Update' : 'Add Boardgame'}
+						{isEdit ? 'Update' : 'Save'}
+					</Button>
+					<Button
+						id='another'
+						buttonStyle={{ color: 'secondary', rounded: 'sm', size: 'sm' }}
+						leftIcon={<FaPlus />}
+					>
+						{isEdit ? 'Update' : 'Save'} & New
 					</Button>
 				</div>
 			</form>
