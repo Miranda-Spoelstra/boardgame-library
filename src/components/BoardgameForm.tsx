@@ -6,6 +6,7 @@ import { useAddBoardgameMutation, useEditBoardgameMutation } from '../store';
 import Panel from './Panel';
 import Button from './button/Button';
 import Input from './formElements/Input';
+import Select from './formElements/Select';
 
 interface BoardgameFormProps {
 	setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +31,30 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 	const [addBoardgame] = useAddBoardgameMutation();
 	const [editBoardgame] = useEditBoardgameMutation();
 
+	// Temp options list. Adapt when multiselect is implemented
+	const mechanicsOptions = [
+		{ label: 'Hexagon Grid', value: 'Hexagon Grid' },
+		{ label: 'Dice Rolling', value: 'Dice Rolling' },
+		{
+			label:
+				'Hand Management, Hexagon Grid, End Game Bonuses, Race, Set Collection',
+			value:
+				'Hand Management, Hexagon Grid, End Game Bonuses, Race, Set Collection',
+		},
+		{
+			label: 'Hand Management, Ladder Climbing, Score-and-Reset Game',
+			value: 'Hand Management, Ladder Climbing, Score-and-Reset Game',
+		},
+		{
+			label: 'Dice Rolling, Hexagon Grid, Hidden Victory Points',
+			value: 'Dice Rolling, Hexagon Grid, Hidden Victory Points',
+		},
+		{
+			label: 'Communication Limits, Cooperative Game',
+			value: 'Communication Limits, Cooperative Game',
+		},
+	];
+
 	// If the data to edit is different, show new edit data
 	if (editData && editData.id !== formData.id) {
 		setFormData(editData);
@@ -50,7 +75,9 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 		resetForm(event.nativeEvent.submitter?.id === 'another');
 	};
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+	) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
@@ -102,11 +129,12 @@ export default function BoardgameForm(props: BoardgameFormProps) {
 						placeholder='Enter average duration'
 						onChange={(e) => handleChange(e)}
 					/>
-					<Input
+					<Select
 						name='mechanics'
 						value={formData.mechanics}
 						label='Mechanics'
-						placeholder='Enter mechanics'
+						placeholder='Choose mechanics'
+						options={mechanicsOptions}
 						onChange={(e) => handleChange(e)}
 					/>
 					<Input
